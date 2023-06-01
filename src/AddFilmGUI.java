@@ -5,12 +5,12 @@ import java.awt.event.ActionListener;
 
 public class AddFilmGUI extends JFrame {
 
-    private FilmDatabase filmDatabase;
-    private JTextField titleField;
-    private JTextField directorField;
-    private JTextField genreField;
-    private JTextField releaseYearField;
-    private JTextField runtimeField;
+    private final FilmDatabase filmDatabase;
+    private final JTextField titleField;
+    private final JTextField directorField;
+    private final JTextField genreField;
+    private final JTextField releaseYearField;
+    private final JTextField runtimeField;
 
     public AddFilmGUI() {
         filmDatabase = new FilmDatabase();
