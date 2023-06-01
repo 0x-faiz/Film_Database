@@ -1,3 +1,7 @@
+package Back_End;
+
+import GUI.*;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -37,7 +41,7 @@ public class FilmDatabase {
             statement.setInt(5,film.getRunTime());
             statement.executeUpdate();
             statement.close();
-            System.out.println("Film wurde erfolgreich Hinzugefügt!");
+            System.out.println("Back_End.Film wurde erfolgreich Hinzugefügt!");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -52,7 +56,7 @@ public class FilmDatabase {
             statement.setString(1, film.getTitle());
             statement.executeUpdate();
             statement.close();
-            System.out.println("Film wurde erfolgreich Gelöscht");
+            System.out.println("Back_End.Film wurde erfolgreich Gelöscht");
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -161,7 +165,7 @@ public class FilmDatabase {
 
             System.out.println("Laufzeit: " + hours + " Stunden " + minutes + " Minuten");
         } else {
-            System.out.println("Film not found!");
+            System.out.println("Back_End.Film not found!");
         }
     }
 

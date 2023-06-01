@@ -1,3 +1,6 @@
+package GUI;
+
+import Back_End.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -41,7 +44,7 @@ public class AddFilmGUI extends JFrame {
         JLabel runtimeLabel = new JLabel("Laufzeit (Minuten):");
         runtimeField = new JTextField(20);
 
-        JButton addButton = new JButton("Film hinzufügen");
+        JButton addButton = new JButton("Back_End.Film hinzufügen");
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -96,16 +99,6 @@ public class AddFilmGUI extends JFrame {
         releaseYearField.setText("");
         runtimeField.setText("");
 
-        JOptionPane.showMessageDialog(this, "Film wurde erfolgreich hinzugefügt!", "Erfolgreich", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Back_End.Film wurde erfolgreich hinzugefügt!", "Erfolgreich", JOptionPane.INFORMATION_MESSAGE);
     }
-/*
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                AddFilmGUI gui = new AddFilmGUI();
-                gui.setVisible(true);
-            }
-        });
-    }
- */
 }
