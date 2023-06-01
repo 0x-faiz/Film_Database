@@ -23,34 +23,37 @@ public class AddFilmGUI extends JFrame {
         setResizable(false);
 
         JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new BorderLayout(20, 20));
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        mainPanel.setLayout(new BorderLayout(50, 50));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
 
         JPanel inputPanel = new JPanel();
         inputPanel.setLayout(new GridLayout(6, 2, 10, 10));
 
         JLabel titleLabel = new JLabel("Filmtitel:");
-        titleField = new JTextField(20);
+        titleField = new JTextField(30);
 
         JLabel directorLabel = new JLabel("Filmregisseur:");
-        directorField = new JTextField(20);
+        directorField = new JTextField(30);
 
         JLabel genreLabel = new JLabel("Filmgenre:");
-        genreField = new JTextField(20);
+        genreField = new JTextField(30);
 
         JLabel releaseYearLabel = new JLabel("Erscheinungsjahr:");
-        releaseYearField = new JTextField(20);
+        releaseYearField = new JTextField(30);
 
         JLabel runtimeLabel = new JLabel("Laufzeit (Minuten):");
-        runtimeField = new JTextField(20);
+        runtimeField = new JTextField(30);
 
-        JButton addButton = new JButton("Back_End.Film hinzufügen");
+        JButton addButton = new JButton("Film hinzufügen");
+
+
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 addFilmButtonClicked();
             }
         });
+
 
         inputPanel.add(titleLabel);
         inputPanel.add(titleField);
@@ -69,12 +72,9 @@ public class AddFilmGUI extends JFrame {
 
         JTextArea outputArea = new JTextArea();
         outputArea.setEditable(false);
-        outputArea.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
+        outputArea.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 18));
 
-        JScrollPane scrollPane = new JScrollPane(outputArea);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
-        mainPanel.add(scrollPane, BorderLayout.SOUTH);
 
         add(mainPanel);
 
@@ -99,6 +99,6 @@ public class AddFilmGUI extends JFrame {
         releaseYearField.setText("");
         runtimeField.setText("");
 
-        JOptionPane.showMessageDialog(this, "Back_End.Film wurde erfolgreich hinzugefügt!", "Erfolgreich", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Film wurde erfolgreich hinzugefügt!", "Erfolgreich", JOptionPane.INFORMATION_MESSAGE);
     }
 }

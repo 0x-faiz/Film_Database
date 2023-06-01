@@ -13,6 +13,7 @@ public class FilmDatabase {
         try {
             // Establish a connection to the database
             connection = DriverManager.getConnection("jdbc:mysql://sql7.freesqldatabase.com:3306/sql7622838", "sql7622838", "91AKnGJCY7");
+            System.out.println("Database connected");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -22,6 +23,7 @@ public class FilmDatabase {
         try {
             if (connection != null && !connection.isClosed()) {
                 connection.close();
+                System.out.println("Database disconnected");
             }
         } catch (SQLException e) {
             e.printStackTrace();
