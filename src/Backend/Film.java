@@ -1,7 +1,4 @@
-package Back_End;
-
-import java.math.BigDecimal;
-import GUI.*;
+package Backend;
 
 public class Film {
 

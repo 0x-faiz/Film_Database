@@ -1,6 +1,6 @@
 package GUI;
 
-import Back_End.*;
+import Backend.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

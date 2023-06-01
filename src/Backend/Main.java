@@ -1,4 +1,4 @@
-package Back_End;
+package Backend;
 
 import GUI.*;
 

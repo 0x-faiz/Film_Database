@@ -1,6 +1,4 @@
-package Back_End;
-
-import GUI.*;
+package Backend;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
