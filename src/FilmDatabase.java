@@ -10,7 +10,7 @@ public class FilmDatabase {
     public FilmDatabase() {
         try {
             // Establish a connection to the database
-            connection = DriverManager.getConnection("jdbc:mysql://sql7.freesqldatabase.com:3306/sql7620473", "sql7620473", "KLMnvqXAWF");
+            connection = DriverManager.getConnection("jdbc:mysql://sql7.freesqldatabase.com:3306/sql7622838", "sql7622838", "91AKnGJCY7");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -39,6 +39,21 @@ public class FilmDatabase {
             statement.close();
             System.out.println("Film wurde erfolgreich Hinzugefügt!");
         } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void deleteFilmByTitle(Film film){
+
+        try{
+            String query = "DELETE FROM films WHERE title = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, film.getTitle());
+            statement.executeUpdate();
+            statement.close();
+            System.out.println("Film wurde erfolgreich Gelöscht");
+        }catch (SQLException e){
             e.printStackTrace();
         }
     }
