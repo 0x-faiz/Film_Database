@@ -11,7 +11,7 @@ public class FilmDatabase {
 
     public FilmDatabase() {
         try {
-            // Establish a connection to the database
+
             connection = DriverManager.getConnection("jdbc:mysql://sql7.freesqldatabase.com:3306/sql7626103", "sql7626103", "T3FgWH7S2N");
             System.out.println("Database connected");
         } catch (SQLException e) {

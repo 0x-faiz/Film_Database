@@ -72,7 +72,7 @@ public class SearchFilmGUI extends JFrame {
 
         JPanel adminPanel = new JPanel();
         adminPanel.setLayout(new BoxLayout(adminPanel, BoxLayout.Y_AXIS));
-        adminPanel.add(Box.createVerticalStrut(8)); // Add vertical spacing
+        adminPanel.add(Box.createVerticalStrut(8));
         adminPanel.add(outputPanel);
 
         JButton adminButton = new JButton("Admin");
@@ -133,7 +133,7 @@ public class SearchFilmGUI extends JFrame {
                 return;
             }
         } catch (NumberFormatException e) {
-            // Ignore if the search term is not a valid number
+
         }
 
         outputArea.setText("Kein Film gefunden für den Suchbegriff \"" + searchTerm + "\".");
@@ -174,15 +174,15 @@ public class SearchFilmGUI extends JFrame {
                 if (checkPassword(password)) {
                     adminAccessGranted = true;
 
-                    // Open FilmsAdminGUI when admin access is granted
-                    FilmsAdminGUI addFilmGUI = new FilmsAdminGUI(); // Pass the reference to SearchFilmGUI
+
+                    FilmsAdminGUI addFilmGUI = new FilmsAdminGUI();
                     addFilmGUI.setVisible(true);
                     dispose(); // Close the SearchFilmGUI
                 } else {
                     JOptionPane.showMessageDialog(SearchFilmGUI.this,
                             "Falsches Passwort. Bitte versuchen Sie es erneut.");
                 }
-                passwordField.setText(""); // Clear the password field
+                passwordField.setText("");
             }
         });
 
@@ -196,7 +196,7 @@ public class SearchFilmGUI extends JFrame {
     }
 
     private boolean checkPassword(char[] password) {
-        char[] correctPassword = "admin".toCharArray(); // Replace with your desired password
+        char[] correctPassword = "admin".toCharArray();
         return Arrays.equals(password, correctPassword);
     }
 
