@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Arrays;
 
 public class SearchFilmGUI extends JFrame {
@@ -20,20 +22,34 @@ public class SearchFilmGUI extends JFrame {
         filmDatabase = new FilmDatabase();
         adminAccessGranted = false;
 
-        setTitle("Filme suchen");
+        setTitle("Film Datenbank");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(true);
 
         JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new BorderLayout(30, 30));
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(30, 110, 30, 110));
+        mainPanel.setLayout(new BorderLayout(50, 10));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(30, 150, 30, 150));
+
+        JLabel titleLabel = new JLabel("Film Datenbank");
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 22));
+        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        mainPanel.add(titleLabel, BorderLayout.NORTH);
 
         JPanel inputPanel = new JPanel();
-        inputPanel.setLayout(new GridLayout(3, 1, 1, 3));
+        inputPanel.setLayout(new GridLayout(4, 2, 3, 3));
+
+        JLabel searchLabel = new JLabel("Suche nach Film");
+        searchLabel.setFont(new Font("Arial", Font.PLAIN, 15));
+        searchLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        inputPanel.add(searchLabel);
 
         searchField = new JTextField(40);
+        inputPanel.add(searchField);
+
+        inputPanel.add(new JLabel());
 
         JButton searchButton = new JButton("Film suchen");
+        searchButton.setBackground(Color.WHITE);
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -41,8 +57,6 @@ public class SearchFilmGUI extends JFrame {
             }
         });
 
-        inputPanel.add(searchField);
-        inputPanel.add(new JLabel());
         inputPanel.add(searchButton);
 
         mainPanel.add(inputPanel, BorderLayout.CENTER);
@@ -62,6 +76,8 @@ public class SearchFilmGUI extends JFrame {
         adminPanel.add(outputPanel);
 
         JButton adminButton = new JButton("Admin");
+        adminButton.setBackground(Color.white);
+        //adminButton.setBackground(Color.);
         adminButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -138,7 +154,7 @@ public class SearchFilmGUI extends JFrame {
 
     private void openAdminPanel() {
         if (adminAccessGranted) {
-            JOptionPane.showMessageDialog(this, "Admin panel already open!");
+            JOptionPane.showMessageDialog(this, "Admin panel ist bereits Offen");
             return;
         }
 
@@ -150,19 +166,21 @@ public class SearchFilmGUI extends JFrame {
         JPasswordField passwordField = new JPasswordField();
 
         JButton loginButton = new JButton("Login");
+        loginButton.setBackground(Color.WHITE);
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 char[] password = passwordField.getPassword();
                 if (checkPassword(password)) {
                     adminAccessGranted = true;
-                    //JOptionPane.showMessageDialog(SearchFilmGUI.this, "Admin access granted!");
 
-                    // Open AddFilmGUI when admin access is granted
-                    FilmsAdminGUI addFilmGUI = new FilmsAdminGUI();
+                    // Open FilmsAdminGUI when admin access is granted
+                    FilmsAdminGUI addFilmGUI = new FilmsAdminGUI(); // Pass the reference to SearchFilmGUI
                     addFilmGUI.setVisible(true);
+                    dispose(); // Close the SearchFilmGUI
                 } else {
-                    JOptionPane.showMessageDialog(SearchFilmGUI.this, "Incorrect password. Try again.");
+                    JOptionPane.showMessageDialog(SearchFilmGUI.this,
+                            "Falsches Passwort. Bitte versuchen Sie es erneut.");
                 }
                 passwordField.setText(""); // Clear the password field
             }
@@ -182,12 +200,5 @@ public class SearchFilmGUI extends JFrame {
         return Arrays.equals(password, correctPassword);
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                SearchFilmGUI searchFilmGUI = new SearchFilmGUI();
-                searchFilmGUI.setVisible(true);
-            }
-        });
-    }
+
 }

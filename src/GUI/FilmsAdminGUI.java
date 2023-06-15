@@ -21,7 +21,7 @@ public class FilmsAdminGUI extends JFrame {
     public FilmsAdminGUI() {
         filmDatabase = new FilmDatabase();
 
-        setTitle("Filme Hinzufügen");
+        setTitle("Admin Panel");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
 
@@ -49,6 +49,7 @@ public class FilmsAdminGUI extends JFrame {
         runtimeField = new JTextField(30);
 
         JButton addButton = new JButton("Film hinzufügen");
+        addButton.setBackground(Color.GREEN);
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -60,6 +61,7 @@ public class FilmsAdminGUI extends JFrame {
         deleteFilmField = new JTextField(30);
 
         JButton deleteButton = new JButton("Film löschen");
+        deleteButton.setBackground(Color.RED);
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -92,6 +94,21 @@ public class FilmsAdminGUI extends JFrame {
 
         mainPanel.add(deletePanel, BorderLayout.SOUTH);
 
+        JButton returnButton = new JButton("Admin Panel verlassen");
+        returnButton.setBackground(Color.WHITE);
+        returnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                returnButtonClicked();
+            }
+        });
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        buttonPanel.add(returnButton);
+
+        mainPanel.add(buttonPanel, BorderLayout.NORTH);
+
         add(mainPanel);
 
         pack();
@@ -123,17 +140,17 @@ public class FilmsAdminGUI extends JFrame {
         boolean success = filmDatabase.deleteFilmByName(filmName);
         if (success) {
             JOptionPane.showMessageDialog(this, "Film erfolgreich gelöscht!");
+
+            deleteFilmField.setText("");
         } else {
             JOptionPane.showMessageDialog(this, "Film konnte nicht gelöscht werden.");
         }
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                FilmsAdminGUI addFilmGUI = new FilmsAdminGUI();
-                addFilmGUI.setVisible(true);
-            }
-        });
+    private void returnButtonClicked() {
+        SearchFilmGUI searchFilmGUI = new SearchFilmGUI();
+        searchFilmGUI.setVisible(true);
+        dispose();
     }
+
 }
