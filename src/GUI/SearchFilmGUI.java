@@ -77,7 +77,6 @@ public class SearchFilmGUI extends JFrame {
 
         JButton adminButton = new JButton("Admin");
         adminButton.setBackground(Color.white);
-        //adminButton.setBackground(Color.);
         adminButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -107,6 +106,7 @@ public class SearchFilmGUI extends JFrame {
         if (film != null) {
             outputArea.setText("Film gefunden (nach Titel):\n");
             displayFilmDetails(film);
+            searchField.setText("");
             return;
         }
 
@@ -114,6 +114,7 @@ public class SearchFilmGUI extends JFrame {
         if (film != null) {
             outputArea.setText("Film gefunden (nach Regisseur):\n");
             displayFilmDetails(film);
+            searchField.setText("");
             return;
         }
 
@@ -121,6 +122,7 @@ public class SearchFilmGUI extends JFrame {
         if (film != null) {
             outputArea.setText("Film gefunden (nach Genre):\n");
             displayFilmDetails(film);
+            searchField.setText("");
             return;
         }
 
@@ -130,6 +132,7 @@ public class SearchFilmGUI extends JFrame {
             if (film != null) {
                 outputArea.setText("Film gefunden (nach Erscheinungsjahr):\n");
                 displayFilmDetails(film);
+                searchField.setText("");
                 return;
             }
         } catch (NumberFormatException e) {
@@ -137,6 +140,7 @@ public class SearchFilmGUI extends JFrame {
         }
 
         outputArea.setText("Kein Film gefunden für den Suchbegriff \"" + searchTerm + "\".");
+        searchField.setText("");
     }
 
     private void displayFilmDetails(Film film) {
@@ -177,7 +181,7 @@ public class SearchFilmGUI extends JFrame {
 
                     FilmsAdminGUI addFilmGUI = new FilmsAdminGUI();
                     addFilmGUI.setVisible(true);
-                    dispose(); // Close the SearchFilmGUI
+                    dispose();
                 } else {
                     JOptionPane.showMessageDialog(SearchFilmGUI.this,
                             "Falsches Passwort. Bitte versuchen Sie es erneut.");
@@ -199,6 +203,4 @@ public class SearchFilmGUI extends JFrame {
         char[] correctPassword = "admin".toCharArray();
         return Arrays.equals(password, correctPassword);
     }
-
-
 }
