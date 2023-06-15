@@ -1,6 +1,8 @@
 package GUI;
 
-import Backend.*;
+import Backend.Film;
+import Backend.FilmDatabase;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -14,6 +16,7 @@ public class AddFilmGUI extends JFrame {
     private final JTextField genreField;
     private final JTextField releaseYearField;
     private final JTextField runtimeField;
+    private final JTextField deleteFilmField;
 
     public AddFilmGUI() {
         filmDatabase = new FilmDatabase();
@@ -27,7 +30,8 @@ public class AddFilmGUI extends JFrame {
         mainPanel.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
 
         JPanel inputPanel = new JPanel();
-        inputPanel.setLayout(new GridLayout(6, 2, 10, 10));
+        inputPanel.setLayout(new GridLayout(7, 2, 10, 10));
+        inputPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 0));
 
         JLabel titleLabel = new JLabel("Filmtitel:");
         titleField = new JTextField(30);
@@ -45,8 +49,6 @@ public class AddFilmGUI extends JFrame {
         runtimeField = new JTextField(30);
 
         JButton addButton = new JButton("Film hinzufügen");
-
-
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -54,6 +56,16 @@ public class AddFilmGUI extends JFrame {
             }
         });
 
+        JLabel deleteFilmLabel = new JLabel("Filmtitel zum Löschen:");
+        deleteFilmField = new JTextField(30);
+
+        JButton deleteButton = new JButton("Film löschen");
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                deleteFilmButtonClicked();
+            }
+        });
 
         inputPanel.add(titleLabel);
         inputPanel.add(titleField);
@@ -70,11 +82,15 @@ public class AddFilmGUI extends JFrame {
 
         mainPanel.add(inputPanel, BorderLayout.CENTER);
 
-        JTextArea outputArea = new JTextArea();
-        outputArea.setEditable(false);
-        outputArea.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 18));
+        JPanel deletePanel = new JPanel();
+        deletePanel.setLayout(new GridLayout(2, 2, 10, 10));
 
+        deletePanel.add(deleteFilmLabel);
+        deletePanel.add(deleteFilmField);
+        deletePanel.add(new JLabel());
+        deletePanel.add(deleteButton);
 
+        mainPanel.add(deletePanel, BorderLayout.SOUTH);
 
         add(mainPanel);
 
@@ -100,5 +116,24 @@ public class AddFilmGUI extends JFrame {
         runtimeField.setText("");
 
         JOptionPane.showMessageDialog(this, "Film wurde erfolgreich hinzugefügt!", "Erfolgreich", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void deleteFilmButtonClicked() {
+        String filmName = deleteFilmField.getText();
+        boolean success = filmDatabase.deleteFilmByName(filmName);
+        if (success) {
+            JOptionPane.showMessageDialog(this, "Film erfolgreich gelöscht!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Film konnte nicht gelöscht werden.");
+        }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                AddFilmGUI addFilmGUI = new AddFilmGUI();
+                addFilmGUI.setVisible(true);
+            }
+        });
     }
 }

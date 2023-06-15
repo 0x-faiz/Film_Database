@@ -12,7 +12,7 @@ public class FilmDatabase {
     public FilmDatabase() {
         try {
             // Establish a connection to the database
-            connection = DriverManager.getConnection("jdbc:mysql://sql7.freesqldatabase.com:3306/sql7622838", "sql7622838", "91AKnGJCY7");
+            connection = DriverManager.getConnection("jdbc:mysql://sql7.freesqldatabase.com:3306/sql7626103", "sql7626103", "T3FgWH7S2N");
             System.out.println("Database connected");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -152,6 +152,23 @@ public class FilmDatabase {
         return null;
     }
 
+    public boolean deleteFilmByName(String title) {
+        try {
+            String query = "DELETE FROM films WHERE title = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, title);
+            int rowsDeleted = statement.executeUpdate();
+            statement.close();
+            if (rowsDeleted > 0) {
+                System.out.println("Film wurde erfolgreich gelöscht");
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+   /*
     public void displayFilmDetails(Film film) {
         if (film != null) {
             System.out.println("Title: " + film.getTitle());
@@ -168,5 +185,6 @@ public class FilmDatabase {
             System.out.println("Back_End.Film not found!");
         }
     }
+    */
 
 }
