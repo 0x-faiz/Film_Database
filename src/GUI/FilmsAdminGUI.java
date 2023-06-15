@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AddFilmGUI extends JFrame {
+public class FilmsAdminGUI extends JFrame {
 
     private final FilmDatabase filmDatabase;
     private final JTextField titleField;
@@ -18,7 +18,7 @@ public class AddFilmGUI extends JFrame {
     private final JTextField runtimeField;
     private final JTextField deleteFilmField;
 
-    public AddFilmGUI() {
+    public FilmsAdminGUI() {
         filmDatabase = new FilmDatabase();
 
         setTitle("Filme Hinzufügen");
@@ -131,7 +131,7 @@ public class AddFilmGUI extends JFrame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                AddFilmGUI addFilmGUI = new AddFilmGUI();
+                FilmsAdminGUI addFilmGUI = new FilmsAdminGUI();
                 addFilmGUI.setVisible(true);
             }
         });

@@ -159,7 +159,7 @@ public class SearchFilmGUI extends JFrame {
                     //JOptionPane.showMessageDialog(SearchFilmGUI.this, "Admin access granted!");
 
                     // Open AddFilmGUI when admin access is granted
-                    AddFilmGUI addFilmGUI = new AddFilmGUI();
+                    FilmsAdminGUI addFilmGUI = new FilmsAdminGUI();
                     addFilmGUI.setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(SearchFilmGUI.this, "Incorrect password. Try again.");
