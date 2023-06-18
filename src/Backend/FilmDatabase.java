@@ -12,7 +12,7 @@ public class FilmDatabase {
     public FilmDatabase() {
         try {
         	
-            connection = DriverManager.getConnection("jdbc:mysql://sql7.freesqldatabase.com:3306/sql7626103", "sql7626103", "T3FgWH7S2N");
+            connection = DriverManager.getConnection("jdbc:mysql://sql7.freesqldatabase.com:3306/sql7627138", "sql7627138", "Qfwuji7dK3");
             System.out.println("Database connected");
         } catch (SQLException e) {
             e.printStackTrace();
