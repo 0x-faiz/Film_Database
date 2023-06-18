@@ -24,7 +24,7 @@ public class SearchFilmGUI extends JFrame {
 
         setTitle("Film Datenbank");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(true);
+        setResizable(false);
 
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout(50, 10));
