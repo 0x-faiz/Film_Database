@@ -11,7 +11,7 @@ public class FilmDatabase {
 
     public FilmDatabase() {
         try {
-
+        	
             connection = DriverManager.getConnection("jdbc:mysql://sql7.freesqldatabase.com:3306/sql7626103", "sql7626103", "T3FgWH7S2N");
             System.out.println("Database connected");
         } catch (SQLException e) {
@@ -43,21 +43,6 @@ public class FilmDatabase {
             statement.close();
             System.out.println("Back_End.Film wurde erfolgreich Hinzugefügt!");
         } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    public void deleteFilmByTitle(Film film){
-
-        try{
-            String query = "DELETE FROM films WHERE title = ?";
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, film.getTitle());
-            statement.executeUpdate();
-            statement.close();
-            System.out.println("Back_End.Film wurde erfolgreich Gelöscht");
-        }catch (SQLException e){
             e.printStackTrace();
         }
     }

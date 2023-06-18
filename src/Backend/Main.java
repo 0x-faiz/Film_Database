@@ -10,6 +10,7 @@ public class Main {
             public void run() {
                 SearchFilmGUI SearchFilmGUI = new SearchFilmGUI();
                 SearchFilmGUI.setVisible(true);
+                System.out.println("Program startet successfully");
             }
         });
     }
